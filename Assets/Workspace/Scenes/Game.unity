@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e592e955bce8db4183c945261b32ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &519420034
+--- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -687,13 +687,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 08452a41818835a418f895a4a9358ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
 --- !u!1 &525662762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,8 +3008,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2014677520}
   - component: {fileID: 2014677521}
-  - component: {fileID: 2014677523}
-  - component: {fileID: 2014677522}
   m_Layer: 0
   m_Name: LevelSystem
   m_TagString: Untagged
@@ -3047,42 +3041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edd5d02c0a074046a745f1c35379e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 3502567084078176878, guid: 3f3d1c4c2b519d64f84cc1168d38b570, type: 3}
---- !u!111 &2014677522
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014677519}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!95 &2014677523
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014677519}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  _level: {fileID: 1528606456850551293, guid: d067432ed1765f344a5629e412afe934, type: 3}
 --- !u!1 &2031630065
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3530,10 @@ PrefabInstance:
     - target: {fileID: 4398268343186231538, guid: 5d0b5c221d3f417488d280eccd428c5a, type: 3}
       propertyPath: m_Name
       value: Snap Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398268343186231538, guid: 5d0b5c221d3f417488d280eccd428c5a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4398268343186231548, guid: 5d0b5c221d3f417488d280eccd428c5a, type: 3}
       propertyPath: m_RootOrder
