@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoStateMachine, ISelectable
+public class MovementController : MonoBehaviour, IStateContext, ISelectable, IMovable
 {
     [SerializeField]
     private Cell _startCell;
@@ -14,17 +14,21 @@ public class MovementController : MonoStateMachine, ISelectable
 
     private MovementStatesFactory _states;
 
+    private State _currentState;
+    public State CurrentState { set => _currentState = value; }
+
     private void Awake()
     {
         transform.position = _startCell.GetPosition();
 
         _states = new MovementStatesFactory(this);
-        InitStateMachine(_states.Idle());
+        _currentState = _states.Idle();
+        _currentState.EnterState();
     }
 
     private void Update()
     {
-        UpdateCurrentState();
+        _currentState.UpdateState();
     }
 
     public void Scale(float scaler)

@@ -12,9 +12,8 @@ namespace voidHedgeHog.Coordinates
         /// <param name="radius"></param>
         /// <param name="pointInRadians"></param>
         /// <returns></returns>\
-        public static Vector3 CirclePointPosition(float radius, float radAngle, float offset)
+        public static Vector3 CirclePointPosition(Vector3 zeroCoords, float radius, float radAngle, float offset)
         {
-            Vector3 zeroCoords = Vector3.zero;
             float degOffset = AngleInRad(offset);
             float x = zeroCoords.x + radius * Mathf.Cos(radAngle / radius  + degOffset);
             float y = zeroCoords.y + radius * Mathf.Sin(radAngle / radius + degOffset);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomSnapGrid : MonoBehaviour
+public class CustomSnapGrid : MonoBehaviour//, IEditorInstancer
 {
     [SerializeField]
     private CustomSnap _snapPrefab;
@@ -50,5 +50,15 @@ public class CustomSnapGrid : MonoBehaviour
     {
         _initTransform = transform;
         if (_scaler <= 0) _scaler = 1;
+    }
+
+    public void Generate()
+    {
+        GenerateGrid();
+    }
+
+    public void Clear()
+    {
+        ClearGrid();
     }
 }

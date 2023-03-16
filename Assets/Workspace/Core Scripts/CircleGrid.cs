@@ -5,6 +5,7 @@ using voidHedgeHog.Coordinates;
 
 public class CircleGrid
 {
+    private Vector3 _zeroCoords;
     private float _radius;
     private float _numbersOfPoints;
     private float _offset;
@@ -12,8 +13,9 @@ public class CircleGrid
     private List<Vector3> _pointsOnCircle;
     private List<float> _pointsInRad;
 
-    public CircleGrid(float radius, float numberOfPoints, float offset)
+    public CircleGrid(Vector3 zeroCoords, float radius, float numberOfPoints, float offset)
     {
+        _zeroCoords = zeroCoords;
         _radius = radius;
         _numbersOfPoints = numberOfPoints;
         _offset = offset;
@@ -44,7 +46,7 @@ public class CircleGrid
 
         for (int i = 0; i < _numbersOfPoints; i++)
         {
-            Vector3 pointPosition = CircleCoordinates.CirclePointPosition(_radius, _pointsInRad[i], _offset);
+            Vector3 pointPosition = CircleCoordinates.CirclePointPosition(_zeroCoords, _radius, _pointsInRad[i], _offset);
             _pointsOnCircle.Add(pointPosition);
         }
     }
