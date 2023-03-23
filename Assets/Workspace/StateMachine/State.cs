@@ -23,4 +23,9 @@ public abstract class State
         newState.EnterState();
         _context.CurrentState = newState;
     }
+
+    public void MakeTransition(State nextState)
+    {
+        
+    }
 }

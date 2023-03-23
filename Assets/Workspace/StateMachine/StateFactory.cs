@@ -5,4 +5,6 @@ public class StateFactory : Factory
     {
         _context = context;
     }
+
+  //  public InitState Init() { return new InitState(_context, this); }
 }

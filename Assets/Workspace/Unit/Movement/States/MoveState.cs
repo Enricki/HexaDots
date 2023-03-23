@@ -1,8 +1,8 @@
 public class MoveState : State
 {
-    MovementController _context;
+    Unit _context;
     MovementStatesFactory _factory;
-    public MoveState(MovementController context, MovementStatesFactory factory) : base(context, factory)
+    public MoveState(Unit context, MovementStatesFactory factory) : base(context, factory)
     {
         _context = context;
         _factory = factory;
@@ -21,12 +21,11 @@ public class MoveState : State
     }
     public override void ExitState()
     {
-
+        _context.SendTurn();
     }
     public override void UpdateState()
     {
-        _context.Move(ScreenPointPicker.ActiveSelectable.GetPosition(), 1);
+        _context.Controller.Move(ScreenPointPicker.ActiveSelectable.GetPosition());
         CheckSwitchStates();
     }
 }
-//https://www.youtube.com/watch?v=kV06GiJgFhc - Посмотреть как осуществляется Свитч стэйтов

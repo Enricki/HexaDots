@@ -2,24 +2,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CounterSetup : MonoListener
+public class CounterSetup : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _valueField;
-
     private LinearCounter _counter;
+    private EventListener _turnListener;
     private int _value = 0;
-
 
     private void Awake()
     {
         SetupCounter();
-        SetupListeners();
     }
 
     private void SetupCounter()
     {
         _counter = new LinearCounter(_value);
+        _turnListener = new EventListener(Events.Turn);
+
+
         UpdateView();
     }
 
@@ -28,13 +29,17 @@ public class CounterSetup : MonoListener
         _valueField.text = _counter.Value.ToString();
     }
 
-    protected override void SetupListeners()
+    private void OnEnable()
     {
-        base.SetupListeners();
+        _turnListener.EventHook += _counter.Increase;
+        _turnListener.EventHook += UpdateView;
+        _turnListener.Subscribe();
+    }
 
-        _listeners[0].AddAction(_counter.Increase);
-        _listeners[1].AddAction(_counter.Reset);
-        _listeners[0].AddAction(UpdateView);
-        _listeners[1].AddAction(UpdateView);
+    private void OnDisable()
+    {
+        _turnListener.EventHook -= _counter.Increase;
+        _turnListener.EventHook -= UpdateView;
+        _turnListener.UnSubscribe();
     }
 }

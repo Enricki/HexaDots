@@ -15,10 +15,10 @@ public class Point : MonoBehaviour, IPositional
 
     private SpriteRenderer _renderer;
 
-    public PointType PointerType { get => _pointType; }
+    public PointType PointType { get => _pointType; }
     public Vector3 GetPosition()
     {
-        return transform.localPosition;
+        return transform.position;
     }
 
     private void Start()

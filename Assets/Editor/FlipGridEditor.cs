@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(CustomSnapGrid))]
-public class SnapGridEditor : Editor
+
+[CustomEditor(typeof(FlippingCell))]
+public class FlipGridEditor : Editor
 {
-    private CustomSnapGrid _grid;
+    private FlippingCell _grid;
     public void OnEnable()
     {
-        _grid = (CustomSnapGrid)target;
+        _grid = (FlippingCell)target;
     }
     public override void OnInspectorGUI()
     {

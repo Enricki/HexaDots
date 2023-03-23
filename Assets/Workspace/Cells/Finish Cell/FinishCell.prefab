@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 3384756603527344354}
   - component: {fileID: 3384756603527344353}
   - component: {fileID: 7389875628171891296}
-  - component: {fileID: 7726402898549824692}
-  - component: {fileID: 3578238465983109631}
+  - component: {fileID: 7057134916027521195}
   m_Layer: 0
-  m_Name: Flipping Cell
+  m_Name: FinishCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384756603527344352}
-  m_LocalRotation: {x: 0, y: 0.00000017484555, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8207547, g: 0.51693577, b: 0.18970275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,7 +114,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
---- !u!114 &7726402898549824692
+--- !u!114 &7057134916027521195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,26 +123,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3384756603527344352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f540990308595ec48aeea987c81a864f, type: 3}
+  m_Script: {fileID: 11500000, guid: fee266ab7ffc0d445b67075d84f31851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfPoints: 4
-  _radius: 0.33
-  _offset: 0
---- !u!114 &3578238465983109631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384756603527344352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692e068ee390d0d44ad7fc9d9f67601b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pointerPrefab: {fileID: 5219630019876217484, guid: bb1a7989594a2b943a8a841a955d423d, type: 3}
-  _pointPrefab: {fileID: 8384318127617295424, guid: a9faeb914ae356747a8e0329f99c1344, type: 3}
 --- !u!1 &3384756604879015544
 GameObject:
   m_ObjectHideFlags: 0

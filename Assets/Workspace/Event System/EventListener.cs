@@ -5,20 +5,18 @@ public class EventListener
     private GameEvent _gameEvent;
     private UnityEvent _unityEvent;
 
+    public delegate void PublicEvent();
+
+    public event PublicEvent EventHook;
+
     public EventListener(GameEvent gameEvent)
     {
         _gameEvent = gameEvent;
-        _unityEvent = new UnityEvent();
-    }
-
-    public void AddAction(UnityAction action)
-    {
-        _unityEvent.AddListener(action);
     }
 
     public void EventRaised()
     {
-        _unityEvent?.Invoke();
+        EventHook?.Invoke();
     }
 
     public void Subscribe()

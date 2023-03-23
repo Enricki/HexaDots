@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovementStatesFactory : StateFactory
 {
-    MovementController _context;
-    public MovementStatesFactory(MovementController context) : base(context)
+    Unit _context;
+    public MovementStatesFactory(Unit context) : base(context)
     {
         _context = context;
     }

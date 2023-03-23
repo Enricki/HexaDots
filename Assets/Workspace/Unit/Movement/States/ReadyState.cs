@@ -1,8 +1,8 @@
 public class ReadyState : State
 {
-    MovementController _context;
+    Unit _context;
     MovementStatesFactory _factory;
-    public ReadyState(MovementController context, MovementStatesFactory factory) : base(context, factory)
+    public ReadyState(Unit context, MovementStatesFactory factory) : base(context, factory)
     {
         _context = context;
         _factory = factory;
@@ -28,4 +28,3 @@ public class ReadyState : State
         CheckSwitchStates();
     }
 }
-//https://www.youtube.com/watch?v=kV06GiJgFhc - Посмотреть как осуществляется Свитч стэйтов

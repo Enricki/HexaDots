@@ -1,14 +1,14 @@
 public class IdleState : State
 {
-    MovementController _context;
+    Unit _context;
     MovementStatesFactory _factory;
-    public IdleState(MovementController context, MovementStatesFactory factory) : base(context, factory)
+    public IdleState(Unit context, MovementStatesFactory factory) : base(context, factory)
     {
         _context = context;
         _factory = factory;
     }
 
-    public override void CheckSwitchStates() 
+    public override void CheckSwitchStates()
     {
         if (ScreenPointPicker.ActiveSelectable != null)
         {
@@ -26,7 +26,7 @@ public class IdleState : State
     }
 
     public override void ExitState() { }
-    public override void UpdateState() 
+    public override void UpdateState()
     {
         CheckSwitchStates();
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,23 +23,22 @@ public class CircleField : MonoBehaviour
 
     private void Awake()
     {
-        _grid = new CircleGrid(transform.localPosition,_radius, _numberOfPoints, _offset);
+        _grid = new CircleGrid(transform.position,_radius, _numberOfPoints, _offset);
     }
 
     private void OnValidate()
     {
-        _grid = new CircleGrid(transform.localPosition, _radius, _numberOfPoints, _offset);
+        _grid = new CircleGrid(transform.position, _radius, _numberOfPoints, _offset);
     }
 
     private void OnDrawGizmos()
     {
-        _grid = new CircleGrid(transform.localPosition, _radius, _numberOfPoints, _offset);
+        _grid = new CircleGrid(transform.position, _radius, _numberOfPoints, _offset);
         Gizmos.DrawWireSphere(transform.position, _radius);
         Gizmos.color = Color.magenta;
         for (int i = 0; i < _numberOfPoints; i++)
         {
-            Gizmos.DrawSphere(_grid.GetCoordsByIndex(i), 0.1f);
+            Gizmos.DrawSphere(_grid.GetCoordsByIndex(i), 0.05f);
         }
-
     }
 }
