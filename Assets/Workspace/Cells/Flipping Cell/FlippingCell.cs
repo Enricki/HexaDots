@@ -25,10 +25,12 @@ public class FlippingCell : Cell, IStateContext
 
     private EventListener _eventListener;
 
+    private EventSender _sender;
 
     private void Awake()
     {
         _eventListener = new EventListener(Events.Turn);
+        _sender = new EventSender(Events.DropU);
     }
     Color defaultColor;
     private void Start()
@@ -72,6 +74,8 @@ public class FlippingCell : Cell, IStateContext
         }
     }
 
+    bool _open;
+
     private void MovePointer()
     {
 
@@ -90,17 +94,23 @@ public class FlippingCell : Cell, IStateContext
         Vector3 target = currentPoint.GetPosition(); //_circleField.Grid.GetCoordsByIndex(_counter.Value - 1);
         _pointer.Target = target;
 
-        if (nextPoint.PointType == PointType.Closed)
+        if (currentPoint.PointType == PointType.Closed)
         {
             _renderer.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 0.5f);
-            _collider.enabled = false;
         }
         else
         {
             _renderer.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1f);
-            _collider.enabled = true;
         }
-        Debug.Log(nextPoint.PointType);
+        if (nextPoint.PointType == PointType.Closed)
+        {
+            _open = false;
+        }
+        else
+        {
+            _open = true;
+        }
+
     }
 
     public void ClearGrid()
@@ -135,5 +145,15 @@ public class FlippingCell : Cell, IStateContext
     {
         _eventListener.EventHook -= MovePointer;
         _eventListener.UnSubscribe();
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Triggered");
+        if (!_open)
+        {
+            _sender.SendEvent();
+        }
     }
 }

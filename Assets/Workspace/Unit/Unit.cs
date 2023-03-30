@@ -6,6 +6,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour, ISelectable, IStateContext
 {
     [SerializeField]
+    private Cell _startCell;
+    [SerializeField]
     private Vector3 _startScale = new Vector3(0.5f, 0.5f);
 
     private MovementController _controller;
@@ -17,6 +19,7 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
     public State CurrentState { set => _currentState = value; }
     public MovementController Controller { get => _controller; }
     public Vector3 Target { get => _target; set => _target = value; }
+    public Cell StartCell { get => _startCell; }
 
     private void Awake()
     {

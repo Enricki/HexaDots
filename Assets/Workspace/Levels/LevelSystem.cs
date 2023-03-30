@@ -1,31 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class LevelSystem : MonoBehaviour
 {
-    private Level _currentLevel;
     [SerializeField]
-    private List<Level> _levels;
+    private List<LevelsDataSet> LevelSets;
+
+    private LevelsDataSet _currentSet;
+    private Level _currentLevel;
+
 
     private CyclicCounter _counter;
 
     EventListener _listener;
 
+    EventListener _reset;
+
     private void Awake()
     {
         _listener = new EventListener(Events.LevelEnd);
-        _counter = new CyclicCounter(0, _levels.Count - 1, false);
-        _currentLevel = Instantiate(_levels[0], transform);
+        _reset = new EventListener(Events.DropU);
+        _currentSet = LevelSets[0];
+        _currentLevel = Instantiate(_currentSet.GetLevelByIndex(0), transform);
+
+        _counter = new CyclicCounter(0, _currentSet.LevelsCount - 1, false);
+
+    }
+
+    private void ResetLevelOnDrop()
+    {
+        StartCoroutine(WaitForSeconds(0.3f));
+
     }
 
     private void ChangeLevel()
     {
         _counter.Increase();
-        Debug.Log(_counter.Value);
         Destroy(_currentLevel.gameObject);
-        _currentLevel = Instantiate(_levels.ElementAt(_counter.Value), transform);
+        _currentLevel = Instantiate(_currentSet.GetLevelByIndex(_counter.Value), transform);
 
     }
 
@@ -33,11 +46,24 @@ public class LevelSystem : MonoBehaviour
     {
         _listener.EventHook += ChangeLevel;
         _listener.Subscribe();
+
+        _reset.EventHook += ResetLevelOnDrop;
+        _reset.Subscribe();
     }
 
     private void OnDisable()
     {
         _listener.EventHook -= ChangeLevel;
         _listener.UnSubscribe();
+
+        _reset.EventHook -= ResetLevelOnDrop;
+        _reset.UnSubscribe();
+    }
+
+    IEnumerator WaitForSeconds(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        Destroy(_currentLevel.gameObject);
+        _currentLevel = Instantiate(_currentSet.GetLevelByIndex(_counter.Value), transform);
     }
 }

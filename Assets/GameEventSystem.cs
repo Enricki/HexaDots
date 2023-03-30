@@ -11,5 +11,6 @@ public class GameEventSystem : MonoBehaviour
     {
         Events.Turn = ScriptableObject.CreateInstance<GameEvent>();
         Events.LevelEnd = ScriptableObject.CreateInstance<GameEvent>();
+        Events.DropU = ScriptableObject.CreateInstance<GameEvent>();
     }
 }

@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 2657631355614908941}
   - component: {fileID: 3539595092829475918}
   - component: {fileID: 4985893037685279551}
+  - component: {fileID: 7921842978885262103}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -172,8 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b3dc3d0455469489bd830d3925b6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startCell: {fileID: 0}
   _startScale: {x: 0.5, y: 0.5, z: 0}
-  sukaBlyat: {fileID: 11400000, guid: 0b870730582a4fb44a144d7dc749cf86, type: 2}
 --- !u!114 &4985893037685279551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +187,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bd6d9f43c4f13439ae58fc1d721a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7921842978885262103
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082610792106376791}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

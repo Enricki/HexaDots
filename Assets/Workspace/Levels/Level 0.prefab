@@ -247,7 +247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3384756603527344352, guid: ff1c16133b8e8454ca4bb12bfda346d2, type: 3}
       propertyPath: m_Name
-      value: Snap Cell 3
+      value: Start Cell
       objectReference: {fileID: 0}
     - target: {fileID: 3384756603527344355, guid: ff1c16133b8e8454ca4bb12bfda346d2, type: 3}
       propertyPath: m_RootOrder
@@ -426,6 +426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 3539595092829475918, guid: 1cf57e79d323e7f49b0e21921436833e, type: 3}
+      propertyPath: _startCell
+      value: 
+      objectReference: {fileID: 4735357165554851280}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cf57e79d323e7f49b0e21921436833e, type: 3}
 --- !u!4 &7260202563630764259 stripped

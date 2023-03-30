@@ -8,6 +8,7 @@ public class CounterSetup : MonoBehaviour
     private TMP_Text _valueField;
     private LinearCounter _counter;
     private EventListener _turnListener;
+    private EventListener _endOfLevel;
     private int _value = 0;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class CounterSetup : MonoBehaviour
     {
         _counter = new LinearCounter(_value);
         _turnListener = new EventListener(Events.Turn);
-
+        _endOfLevel = new EventListener(Events.LevelEnd);
 
         UpdateView();
     }
@@ -34,6 +35,10 @@ public class CounterSetup : MonoBehaviour
         _turnListener.EventHook += _counter.Increase;
         _turnListener.EventHook += UpdateView;
         _turnListener.Subscribe();
+
+        _endOfLevel.EventHook += _counter.Reset;
+        _endOfLevel.EventHook += UpdateView;
+        _endOfLevel.Subscribe();
     }
 
     private void OnDisable()
@@ -41,5 +46,9 @@ public class CounterSetup : MonoBehaviour
         _turnListener.EventHook -= _counter.Increase;
         _turnListener.EventHook -= UpdateView;
         _turnListener.UnSubscribe();
+
+        _endOfLevel.EventHook -= _counter.Reset;
+        _endOfLevel.EventHook -= UpdateView;
+        _endOfLevel.UnSubscribe();
     }
 }

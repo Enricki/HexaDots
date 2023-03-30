@@ -12,7 +12,7 @@ public class IdleState : State
     {
         if (ScreenPointPicker.ActiveSelectable != null)
         {
-            if (_context == ScreenPointPicker.ActiveSelectable)
+            if (_context.GetPosition() != ScreenPointPicker.ActiveSelectable.GetPosition())
             {
                 SwitchState(_factory.Ready());
             }
@@ -22,6 +22,7 @@ public class IdleState : State
 
     public override void EnterState()
     {
+        ScreenPointPicker.ActiveSelectable = null;
         _context.Scale(1);
     }
 

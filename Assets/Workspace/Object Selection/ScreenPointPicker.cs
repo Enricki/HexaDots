@@ -16,6 +16,11 @@ public class ScreenPointPicker : MonoBehaviour
             }
             return null;
         }
+        set
+        {
+            _activeSelectable = value;
+        }
+
     }
 
     private void Start()
@@ -34,16 +39,17 @@ public class ScreenPointPicker : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
-                if (_activeSelectable == null)
-                {
-                    _activeSelectable = hit.collider.GetComponent<ISelectable>();
-                    _previousSelectable = _activeSelectable;
-                }
-                else
-                {
-                    _previousSelectable = _activeSelectable;
-                    _activeSelectable = hit.collider.GetComponent<ISelectable>();
-                }
+                _activeSelectable = hit.collider.GetComponent<ISelectable>();
+                // if (_activeSelectable == null)
+                // {
+                //     _activeSelectable = hit.collider.GetComponent<ISelectable>();
+                ////     _previousSelectable = _activeSelectable;
+                // }
+                // else
+                // {
+                // //    _previousSelectable = _activeSelectable;
+                //     _activeSelectable = hit.collider.GetComponent<ISelectable>();
+                // }
             }
         }
     }

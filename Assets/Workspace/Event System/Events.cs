@@ -6,4 +6,5 @@ public static class Events
 {
     public static GameEvent Turn;
     public static GameEvent LevelEnd;
+    public static GameEvent DropU;
 }

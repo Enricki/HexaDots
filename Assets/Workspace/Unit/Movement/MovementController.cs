@@ -8,7 +8,6 @@ public class MovementController : MonoBehaviour
     private float _movementSpeed = 6f;
     [SerializeField]
     private float _maxDistance = 1f;
-
     public void Move(Vector3 target)
     {
         float distance = Vector3.Distance(transform.position, target);
