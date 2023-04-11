@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    [SerializeField]
+    private float _delay = 0.5f;
     public void ChangeScene(int index)
     {
-        StartCoroutine(Delay(0.5f, index));
+        StartCoroutine(Delay(_delay, index));
     }
 
     IEnumerator Delay(float sec, int sceneIndex)

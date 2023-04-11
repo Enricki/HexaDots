@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 1082610792106376789}
   - component: {fileID: 1368821898777488363}
   - component: {fileID: 2657631355614908941}
-  - component: {fileID: 3539595092829475918}
+  - component: {fileID: 156912766287904523}
   - component: {fileID: 4985893037685279551}
-  - component: {fileID: 7921842978885262103}
+  - component: {fileID: -2284626882646561949}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -138,7 +138,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082610792106376791}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 6
   _maxDistance: 1
---- !u!114 &3539595092829475918
+--- !u!114 &156912766287904523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,11 +170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082610792106376791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b3dc3d0455469489bd830d3925b6ac, type: 3}
+  m_Script: {fileID: 11500000, guid: c46f3941ad6dd034aa258fe07993011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCell: {fileID: 0}
-  _startScale: {x: 0.5, y: 0.5, z: 0}
+  _scaleFactor: 2
+  _time: 0.2
 --- !u!114 &4985893037685279551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,24 +187,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bd6d9f43c4f13439ae58fc1d721a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &7921842978885262103
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &-2284626882646561949
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082610792106376791}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b3dc3d0455469489bd830d3925b6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startCell: {fileID: 0}
+  _startScale: {x: 0.5, y: 0.5}

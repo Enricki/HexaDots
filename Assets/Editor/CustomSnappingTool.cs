@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.EditorTools;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [EditorTool(displayName: "Custom Snap Move", typeof(CustomSnap))]
@@ -37,7 +36,7 @@ public class CustomSnappingTool : EditorTool
     }
     private void MoveWithSnapping(Transform targetTransform, Vector3 newPosition)
     {
-        CustomSnapPoint[] allPoints = FindObjectsOfType<CustomSnapPoint>();
+        CustomSnapPoint[] allPoints = StageUtility.GetCurrentStageHandle().FindComponentsOfType< CustomSnapPoint>();
         CustomSnapPoint[] targetPoints = targetTransform.GetComponentsInChildren<CustomSnapPoint>();
 
 

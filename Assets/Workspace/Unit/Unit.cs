@@ -8,27 +8,41 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
     [SerializeField]
     private Cell _startCell;
     [SerializeField]
-    private Vector3 _startScale = new Vector3(0.5f, 0.5f);
+    private Vector2 _startScale = new Vector2(0.5f, 0.5f);
+
+    private Cell _currentCell;
 
     private MovementController _controller;
+    private Scaler _scaler;
+
     private MovementStatesFactory _states;
     private State _currentState;
     private EventSender _sender;
+
     private Vector3 _target;
 
-    public State CurrentState { set => _currentState = value; }
+
     public MovementController Controller { get => _controller; }
-    public Vector3 Target { get => _target; set => _target = value; }
+    public Scaler Scaler { get => _scaler; }
     public Cell StartCell { get => _startCell; }
+
+    public State CurrentState { set => _currentState = value; }
+
+    public Cell CurrentCell { get => _currentCell; set => _currentCell = value; }
+    public Vector3 Target { get => _target; set => _target = value; }
 
     private void Awake()
     {
         _controller = GetComponent<MovementController>();
+        _scaler = GetComponent<Scaler>();
         _states = new MovementStatesFactory(this);
         _currentState = _states.Idle();
         _currentState.EnterState();
         _sender = new EventSender(Events.Turn);
+
+        _currentCell = _startCell;
     }
+
 
     private void Update()
     {
@@ -40,13 +54,13 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
         _sender.SendEvent();
     }
 
-    public void Scale(float scaler) //Переделать позже под анимацию, убрать из контроллера
-    {
-        transform.localScale = _startScale * scaler;
-    }
-
     public Vector3 GetPosition()
     {
         return transform.position;
+    }
+
+    private void OnDestroy()
+    {
+        _currentState = _states.Idle();
     }
 }

@@ -10,16 +10,11 @@ public class ReadyState : State
 
     public override void CheckSwitchStates()
     {
-
-        if (_context != ScreenPointPicker.ActiveSelectable)
-        {
-            SwitchState(_factory.Move());
-        }
-
+        SwitchState(_factory.Move());
     }
     public override void EnterState()
     {
-        _context.Scale(1.4f);
+
     }
 
     public override void ExitState() { }

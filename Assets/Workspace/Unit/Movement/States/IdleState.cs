@@ -10,11 +10,11 @@ public class IdleState : State
 
     public override void CheckSwitchStates()
     {
-        if (ScreenPointPicker.ActiveSelectable != null)
+        if ((Cell)ScreenPointPicker.ActiveSelectable != null)
         {
             if (_context.GetPosition() != ScreenPointPicker.ActiveSelectable.GetPosition())
             {
-                SwitchState(_factory.Ready());
+                SwitchState(_factory.Move());
             }
         }
     }
@@ -22,8 +22,7 @@ public class IdleState : State
 
     public override void EnterState()
     {
-        ScreenPointPicker.ActiveSelectable = null;
-        _context.Scale(1);
+        _context.Scaler.Scale(1f, 0.3f);
     }
 
     public override void ExitState() { }

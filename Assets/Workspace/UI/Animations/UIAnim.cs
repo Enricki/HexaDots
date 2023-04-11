@@ -10,58 +10,71 @@ public class UIAnim : MonoBehaviour
     private Vector2 _increasedValue = Vector2.one;
     [Space(20)]
     [SerializeField]
-    Animations _animation;
+    Animations _appearanceAnimType;
+    [SerializeField]
+    Animations _idleAnimType;
+    [SerializeField]
+    Animations _exitAnimType;
 
-    private delegate void AnimationType();
-    private event AnimationType _type;
-
-    public void Levitate()
+    public Anima _currentAnim()
     {
-        transform.localScale = _startValue;
-        transform.LeanScale(_increasedValue, 0.8f).setLoopPingPong();
+        return animas[(int)_idleAnimType];
     }
 
-    public void Bounce()
-    {
-        _startValue = transform.localPosition;
-        transform.LeanMoveLocalY(_increasedValue.y, 0.8f).setLoopPingPong();
-    }
+
+    public delegate void Anima();
+    public Anima _anima;
+
+    List<Anima> animas = new List<Anima>();
 
     private void Start()
     {
-        _type.Invoke();
+        Bounce();
     }
-
-    private void OnEnable()
+    public void Punch()
     {
-
-        if (_animation == Animations.Levitate)
-        {
-            _type += Levitate;
-        }
-        else if (_animation == Animations.Bounce)
-        {
-            _type += Bounce;
-        }
-        Debug.Log(_animation);
-
+        transform.LeanScale(Vector2.zero, 1.2f).setEase(LeanTweenType.punch);
     }
-
-    private void OnDisable()
+    public Anima Bounce()
     {
-        if (_animation == Animations.Levitate)
-        {
-            _type -= Levitate;
-        }
-        else if (_animation == Animations.Bounce)
-        {
-            _type -= Bounce;
-        }
+        transform.localScale = _startValue;
+        transform.LeanScale(_increasedValue, 0.8f).setLoopPingPong();
+        return null;
     }
+
+    public Anima Levitate()
+    {
+        _startValue = transform.localPosition;
+        transform.LeanMoveLocalY(_increasedValue.y, 0.8f).setLoopPingPong();
+        return null;
+    }
+
+    public Anima ScaleToZero()
+    {
+        transform.LeanScale(Vector2.zero, 0.25f);
+        return null;
+    }
+
+    public Anima Shift(float x)
+    {
+        transform.LeanMoveLocalX(x, 0.5f).setEase(LeanTweenType.easeOutQuad);
+        return null;
+    }
+
+    public void Rotate()
+    {
+        transform.Rotate(new Vector3(0,0,-22));
+        transform.LeanRotateZ(0f, 0.1f).setLoopCount(1);
+     //   transform.localRotation = startRot;
+    }
+
 }
 
 public enum Animations
 {
+    None = -1,
     Levitate,
-    Bounce
+    Bounce,
+    ScaleToZero,
+    Shift,
 }

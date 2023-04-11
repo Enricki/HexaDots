@@ -6,19 +6,20 @@ public class FinishCell : Cell
 {
     private EventListener _listener;
     private EventSender _sender;
-    [SerializeField]
-    private Unit _unit;
+
+
 
     private void Awake()
     {
         _listener = new EventListener(Events.Turn);
         _sender = new EventSender(Events.LevelEnd);
+        transform.LeanScale(Vector2.zero, 1.2f).setEase(LeanTweenType.punch);
     }
 
 
     public void EndLevel()
     {
-        if (_unit.GetPosition() == transform.position)
+        if (HasUnit)
             _sender.SendEvent();
     }
 

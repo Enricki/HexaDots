@@ -10,6 +10,7 @@ public class MoveState : State
 
     public override void CheckSwitchStates()
     {
+
         if (ScreenPointPicker.ActiveSelectable.GetPosition() == _context.GetPosition())
         {
             SwitchState(_factory.Idle());
@@ -17,10 +18,12 @@ public class MoveState : State
     }
     public override void EnterState()
     {
-
+        _context.Scaler.Scale(1.4f, 0.3f);
     }
     public override void ExitState()
     {
+        _context.CurrentCell = (Cell)ScreenPointPicker.ActiveSelectable;
+        _context.CurrentCell.Unit = _context;
         _context.SendTurn();
     }
     public override void UpdateState()

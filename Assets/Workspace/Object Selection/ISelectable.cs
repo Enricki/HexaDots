@@ -1,1 +1,4 @@
-public interface ISelectable : IPositional { }
+public interface ISelectable : IPositional 
+{
+
+}
