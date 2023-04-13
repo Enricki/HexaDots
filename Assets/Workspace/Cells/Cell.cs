@@ -7,7 +7,7 @@ public class Cell : MonoBehaviour, ISelectable
 
     public Unit Unit { get => _unit; set => _unit = value; }
 
-    protected void Awake()
+    private void Awake()
     {
         transform.LeanScale(Vector2.zero, 0.9f).setEase(LeanTweenType.punch);
     }

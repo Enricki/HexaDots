@@ -15,14 +15,6 @@ public class FlipGridEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        GUILayout.Space(20);
-        if (GUILayout.Button("Generate Grid"))
-        {
-            _grid.GenerateGrid();
-        }
-        if (GUILayout.Button("Clear Grid"))
-        {
-            _grid.ClearGrid();
-        }
+
     }
 }

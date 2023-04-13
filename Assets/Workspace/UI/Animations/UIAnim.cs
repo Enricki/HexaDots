@@ -8,6 +8,8 @@ public class UIAnim : MonoBehaviour
     private Vector2 _startValue = Vector2.one;
     [SerializeField]
     private Vector2 _increasedValue = Vector2.one;
+    [SerializeField]
+    LeanTweenType animationType;
     [Space(20)]
     [SerializeField]
     Animations _appearanceAnimType;

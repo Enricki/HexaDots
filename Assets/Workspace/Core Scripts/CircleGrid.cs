@@ -37,8 +37,8 @@ public class CircleGrid
         float section = 0f;
         for (int i = 0; i < _numbersOfPoints; i++)
         {
-            section += sectionLenth;
             _pointsInRad.Add(section);
+            section += sectionLenth;
         }
 
         _pointsOnCircle = new List<Vector3>();

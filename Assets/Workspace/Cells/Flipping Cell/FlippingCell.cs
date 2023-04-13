@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(CircleField), typeof(SpriteRenderer), typeof(Collider2D))]
+[RequireComponent(typeof(CircleField), typeof(SpriteRenderer))]
 public class FlippingCell : Cell, IStateContext
 {
     [SerializeField]
@@ -11,28 +11,34 @@ public class FlippingCell : Cell, IStateContext
     [SerializeField]
     private Point _pointPrefab;
 
+    [SerializeField]
+    private PointVisual[] _pointsOfTypes;
+
     private Pointer _pointer;
     private CyclicCounter _counter;
 
     private CircleField _circleField;
-    private Collider2D _collider;
     private SpriteRenderer _renderer;
     private List<Point> _points;
     private State _currentState;
+    private EventListener _eventListener;
+    private EventSender _sender;
+    private Color defaultColor;
+
 
     public Pointer Pointer { get => _pointer; }
     public State CurrentState { set => _currentState = value; }
+    public CircleField CircleField { get => _circleField; }
 
-    private EventListener _eventListener;
 
-    private EventSender _sender;
+
 
     private void Awake()
     {
         _eventListener = new EventListener(Events.Turn);
         _sender = new EventSender(Events.DropU);
     }
-    Color defaultColor;
+
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -50,28 +56,18 @@ public class FlippingCell : Cell, IStateContext
         _pointer.transform.position = _points.ElementAt(_counter.Value).GetPosition();
     }
 
+
     private void AddPoints()
     {
         _points = new List<Point>();
-        if (transform.childCount <= 1)
+        for (int i = 0; i < _circleField.NumberOfPoints; i++)
         {
-            for (int i = 0; i < _circleField.NumberOfPoints; i++)
-            {
-                Point point = Instantiate(_pointPrefab, transform);
-                point.transform.position = _circleField.Grid.GetCoordsByIndex(i);
-                _points.Add(point);
-            }
+            Point instance = Instantiate(_pointPrefab, transform);
+            instance.transform.position = _circleField.Grid.GetCoordsByIndex(i);
+            instance.Visual = _pointsOfTypes[i];
+            _points.Add(instance);
         }
-        else
-        {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                if (transform.GetChild(i).gameObject.GetComponent<Point>())
-                {
-                    _points.Add(transform.GetChild(i).gameObject.GetComponent<Point>());
-                }
-            }
-        }
+
     }
 
     bool _open;
@@ -147,13 +143,12 @@ public class FlippingCell : Cell, IStateContext
         _eventListener.UnSubscribe();
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnValidate()
     {
-        Debug.Log("Triggered");
-        if (!_open)
+        _circleField = GetComponent<CircleField>();
+        if (_pointsOfTypes.Length != _circleField.NumberOfPoints)
         {
-            _sender.SendEvent();
+            _pointsOfTypes = new PointVisual[_circleField.NumberOfPoints];
         }
     }
 }

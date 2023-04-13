@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Open
   m_EditorClassIdentifier: 
   _type: 0
-  _sprite: {fileID: 21300000, guid: c7aa62ae78ffca0498c89e5f45f94c0e, type: 3}
+  _sprite: {fileID: 21300000, guid: be5b1c93244c34a42912e583f56d9393, type: 3}
+  _color: {r: 0.71129084, g: 1, b: 0.25098038, a: 0.6745098}

@@ -7,15 +7,13 @@ using UnityEngine;
 public class Point : MonoBehaviour, IPositional
 {
     [SerializeField]
-    private PointType _pointType;
-    [Space(60)]
-    [SerializeField]
     private PointVisual _visual;
 
-
     private SpriteRenderer _renderer;
+    private PointType _pointType;
 
-    public PointType PointType { get => _pointType; }
+    public PointType PointType { get => _pointType;}
+    public PointVisual Visual { set => _visual = value; }
     public Vector3 GetPosition()
     {
         return transform.position;
@@ -30,6 +28,8 @@ public class Point : MonoBehaviour, IPositional
     public void UpdateVisual()
     {
         _renderer.sprite = _visual.Sprite;
+        _renderer.color = _visual.Color;
+        _pointType = _visual.Type;
     }
 
     private void OnValidate()
@@ -42,5 +42,4 @@ public enum PointType
 {
     Open,
     Closed,
-    Displacing
 }
