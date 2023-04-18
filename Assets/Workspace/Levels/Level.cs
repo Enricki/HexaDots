@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private LevelsDataSet _levelSet;
+
+    private int _id;
+
+    public int ID { get => _id; }
+
+    private void Start()
     {
-        
+        _id = _levelSet.CurrentLevelIndex;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

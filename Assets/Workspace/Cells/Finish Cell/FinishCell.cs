@@ -5,10 +5,7 @@ using UnityEngine;
 public class FinishCell : Cell
 {
     private EventListener _listener;
-    private EventSender _sender;
-
-
-
+    protected EventSender _sender;
     private void Awake()
     {
         _listener = new EventListener(Events.Turn);
@@ -16,22 +13,23 @@ public class FinishCell : Cell
         transform.LeanScale(Vector2.zero, 1.2f).setEase(LeanTweenType.punch);
     }
 
-
-    public void EndLevel()
+    private void OnHasUnit()
     {
         if (HasUnit)
+        {
             _sender.SendEvent();
+        }
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
-        _listener.EventHook += EndLevel;
+        _listener.EventHook += OnHasUnit;
         _listener.Subscribe();
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
-        _listener.EventHook -= EndLevel;
+        _listener.EventHook -= OnHasUnit;
         _listener.UnSubscribe();
     }
 }

@@ -44,7 +44,7 @@ public class FlippingCell : Cell, IStateContext
         _collider = GetComponent<Collider2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _circleField = GetComponent<CircleField>();
-        _counter = new CyclicCounter(0, _circleField.NumberOfPoints - 1, true);
+        _counter = new CyclicCounter(0,0, _circleField.NumberOfPoints);
         AddPoints();
         AddPointer();
         defaultColor = _renderer.color;
@@ -107,6 +107,8 @@ public class FlippingCell : Cell, IStateContext
             _open = true;
         }
 
+        OnHasUnit();
+
     }
 
     public void ClearGrid()
@@ -126,7 +128,7 @@ public class FlippingCell : Cell, IStateContext
     {
         ClearGrid();
         _circleField = GetComponent<CircleField>();
-        _counter = new CyclicCounter(1, _circleField.NumberOfPoints, true);
+        _counter = new CyclicCounter(0,0, _circleField.NumberOfPoints);
         AddPoints();
     }
 
@@ -149,6 +151,14 @@ public class FlippingCell : Cell, IStateContext
         if (_pointsOfTypes.Length != _circleField.NumberOfPoints)
         {
             _pointsOfTypes = new PointVisual[_circleField.NumberOfPoints];
+        }
+    }
+
+    private void OnHasUnit()
+    {
+        if (HasUnit)
+        {
+            _sender.SendEvent();
         }
     }
 }

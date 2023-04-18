@@ -1,15 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class CounterSetup : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _valueField;
+    [SerializeField]
+    private int _value = 0;
+    [Space(20)]
+    [SerializeField]
+    private UnityEvent _actionOnTurn;
+    [SerializeField]
+    private UnityEvent _actionOnEnd;
+
     private LinearCounter _counter;
     private EventListener _turnListener;
     private EventListener _endOfLevel;
-    private int _value = 0;
+    private EventListener _restartLevel;
+
+
+    public int StartValue { get => _value; set => _value = value; }
 
     private void Awake()
     {
@@ -21,6 +33,7 @@ public class CounterSetup : MonoBehaviour
         _counter = new LinearCounter(_value);
         _turnListener = new EventListener(Events.Turn);
         _endOfLevel = new EventListener(Events.LevelEnd);
+        _restartLevel = new EventListener(Events.ResetLevel);
 
         UpdateView();
     }
@@ -32,23 +45,42 @@ public class CounterSetup : MonoBehaviour
 
     private void OnEnable()
     {
-        _turnListener.EventHook += _counter.Increase;
-        _turnListener.EventHook += UpdateView;
+        _turnListener.EventHook += _actionOnTurn.Invoke;
         _turnListener.Subscribe();
 
-        _endOfLevel.EventHook += _counter.Reset;
-        _endOfLevel.EventHook += UpdateView;
+        _endOfLevel.EventHook += _actionOnEnd.Invoke;
         _endOfLevel.Subscribe();
+
+        _restartLevel.EventHook += ResetCounter;
+        _restartLevel.Subscribe();
     }
 
     private void OnDisable()
     {
-        _turnListener.EventHook -= _counter.Increase;
-        _turnListener.EventHook -= UpdateView;
+        _turnListener.EventHook -= _actionOnTurn.Invoke;
         _turnListener.UnSubscribe();
 
-        _endOfLevel.EventHook -= _counter.Reset;
-        _endOfLevel.EventHook -= UpdateView;
+        _endOfLevel.EventHook -= _actionOnEnd.Invoke;
         _endOfLevel.UnSubscribe();
+
+        _restartLevel.EventHook -= ResetCounter;
+        _restartLevel.UnSubscribe();
+    }
+
+    public void ResetCounter()
+    {
+        _counter.Reset();
+        UpdateView();
+    }
+
+    public void Increase()
+    {
+        _counter.Increase();
+        UpdateView();
     }
 }
+
+
+//LevelSet
+//Level(int)
+//startCount;

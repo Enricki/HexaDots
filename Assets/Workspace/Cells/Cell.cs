@@ -31,5 +31,4 @@ public class Cell : MonoBehaviour, ISelectable
             return false;
         }
     }
-
 }
