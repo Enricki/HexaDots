@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 [RequireComponent(typeof(CircleField), typeof(SpriteRenderer))]
-public class FlippingCell : Cell, IStateContext
+public class FlippingCell : Cell
 {
     [SerializeField]
     private Pointer _pointerPrefab;
@@ -20,14 +20,12 @@ public class FlippingCell : Cell, IStateContext
     private CircleField _circleField;
     private SpriteRenderer _renderer;
     private List<Point> _points;
-    private State _currentState;
     private EventListener _eventListener;
     private EventSender _sender;
     private Color defaultColor;
 
 
     public Pointer Pointer { get => _pointer; }
-    public State CurrentState { set => _currentState = value; }
     public CircleField CircleField { get => _circleField; }
 
 
@@ -70,8 +68,9 @@ public class FlippingCell : Cell, IStateContext
 
     }
 
-    bool _open;
-
+    /// <summary>
+    /// Переделать по возможости
+    /// </summary>
     private void MovePointer()
     {
 
@@ -93,22 +92,12 @@ public class FlippingCell : Cell, IStateContext
         if (currentPoint.PointType == PointType.Closed)
         {
             _renderer.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 0.5f);
+            OnHasUnit();
         }
         else
         {
             _renderer.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1f);
         }
-        if (nextPoint.PointType == PointType.Closed)
-        {
-            _open = false;
-        }
-        else
-        {
-            _open = true;
-        }
-
-        OnHasUnit();
-
     }
 
     public void ClearGrid()

@@ -20,8 +20,10 @@ public class CounterSetup : MonoBehaviour
     private EventListener _endOfLevel;
     private EventListener _restartLevel;
 
+    [SerializeField]
+    private LevelsDataSet _set;
 
-    public int StartValue { get => _value; set => _value = value; }
+    public int Value { get => _value;}
 
     private void Awake()
     {
@@ -69,6 +71,7 @@ public class CounterSetup : MonoBehaviour
 
     public void ResetCounter()
     {
+        _set.TurnsCount = _counter.Value;
         _counter.Reset();
         UpdateView();
     }
@@ -79,8 +82,3 @@ public class CounterSetup : MonoBehaviour
         UpdateView();
     }
 }
-
-
-//LevelSet
-//Level(int)
-//startCount;

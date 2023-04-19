@@ -6,6 +6,7 @@ public class GameEvent : ScriptableObject
 {
     private List<EventListener> listeners = new List<EventListener>();
 
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
     public void AddListener(EventListener listener)
     {
         listeners.Add(listener);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Events;
 
 public class EventListener
@@ -17,6 +18,18 @@ public class EventListener
     public void EventRaised()
     {
         EventHook?.Invoke();
+    }
+
+    public void Sub(PublicEvent pEvent)
+    {
+        EventHook += pEvent;
+        _gameEvent.AddListener(this);
+    }
+
+    public void UnSub(PublicEvent pEvent)
+    {
+        EventHook -= pEvent;
+        _gameEvent.RemoveListener(this);
     }
 
     public void Subscribe()

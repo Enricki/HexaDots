@@ -14,6 +14,10 @@ public class TweenAnimationController : MonoBehaviour
     private void Awake()
     {
         PlayAnim(_appearanceAnimation);
+        if (_idleAnimation != null)
+        {
+            _appearanceAnimation.Tween.setOnComplete(PlayIdle);
+        }
     }
 
     public void PlayAnim(TweenAnimationPreset preset)
@@ -23,5 +27,10 @@ public class TweenAnimationController : MonoBehaviour
             LeanTween.cancel(gameObject);
             preset.PlayAnimation(transform);
         }
+    }
+
+    public void PlayIdle()
+    {
+        PlayAnim(_idleAnimation);
     }
 }

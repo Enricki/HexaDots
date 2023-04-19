@@ -11,7 +11,6 @@ public abstract class DataKeeper : ScriptableObject
     }
 }
 
-
 public enum TTypes
 {
     int_type,

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1f929e412d6a0842b4fa2391e2c6284, type: 3}
-  m_Name: Appear From Down
+  m_Name: Appear From Right 1
   m_EditorClassIdentifier: 
   _animationType: 32
   _usePinPongLoop: 0
-  _time: 1.35
-  _delay: 0.2
+  _time: 1.2
+  _delay: 0
   _useStartPosition: 0
-  _startPosition: {x: -1500, y: 0}
-  _targetPosition: {x: 0, y: 0}
+  _startPosition: {x: 0, y: 0}
+  _targetPosition: {x: -1070, y: 0}

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Scaler : MonoBehaviour
 {
-    [SerializeField] 
-    private float _scaleFactor = 2f;
-    [SerializeField]
-    private float _time = 0.2f;
+    //[SerializeField] 
+    //private float _scaleFactor = 2f;
+    //[SerializeField]
+    //private float _time = 0.2f;
 
     private Vector3 _startScale;
 

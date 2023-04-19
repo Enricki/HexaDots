@@ -6,6 +6,8 @@ public class LevelSystem : MonoBehaviour
 {
     [SerializeField]
     private List<LevelsDataSet> LevelSets;
+    [SerializeField]
+    private CounterSetup _turnCounter;
 
 
     private LevelsDataSet _currentSet;

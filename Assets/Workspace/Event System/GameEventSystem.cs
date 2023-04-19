@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameEventSystem : MonoBehaviour
 {
-
-
-
     private void Awake()
     {
         Events.Turn = ScriptableObject.CreateInstance<GameEvent>();
@@ -14,5 +11,5 @@ public class GameEventSystem : MonoBehaviour
         Events.DropU = ScriptableObject.CreateInstance<GameEvent>();
         Events.ChangeSoundLevel = ScriptableObject.CreateInstance<GameEvent>();
         Events.ResetLevel = ScriptableObject.CreateInstance<GameEvent>();
-}
+    }
 }

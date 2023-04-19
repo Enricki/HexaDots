@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class NotDestroy : MonoBehaviour
 {
-    private static NotDestroy _instance;
+    private string Id;
+
     private void Awake()
     {
-        if (_instance != null)
+        Id = gameObject.name;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < FindObjectsOfType<NotDestroy>().Length; i++)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
+            if (FindObjectsOfType<NotDestroy>()[i] != this)
+            {
+                if (FindObjectsOfType<NotDestroy>()[i].Id == Id)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
         DontDestroyOnLoad(gameObject);
     }

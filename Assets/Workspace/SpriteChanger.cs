@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SpriteChanger : MonoBehaviour
 {
     [SerializeField]
+    Settings _settings;
+    [SerializeField]
     private Sprite[] _sprites;
     [SerializeField]
     private Image _image;
@@ -13,12 +15,14 @@ public class SpriteChanger : MonoBehaviour
 
     private void Start()
     {
-        _cyclicCounter = new CyclicCounter(0, 2, _sprites.Length);
-        _image.sprite = _sprites[2];
+        int volumeLevel = _settings.VolumeLevel;
+        _cyclicCounter = new CyclicCounter(0, volumeLevel, _sprites.Length);
+        _image.sprite = _sprites[volumeLevel];
     }
 
     public void ChangeSprite()
     {
+
         _cyclicCounter.Increase();
         _image.sprite = _sprites[_cyclicCounter.Value];
     }

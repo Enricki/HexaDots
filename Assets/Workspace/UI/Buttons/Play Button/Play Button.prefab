@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3318960307125087674}
   - component: {fileID: 3318960307125087675}
-  - component: {fileID: 3318960307125087672}
+  - component: {fileID: 5580769683582622681}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -135,7 +135,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3318960307125087672
+--- !u!114 &5580769683582622681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a867c14a5b7276343af957f06a5ec7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _appearanceAnimation: {fileID: 0}
+  _idleAnimation: {fileID: 0}
+  _exitAnimation: {fileID: 0}
 --- !u!1 &3811811118305521214
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3318960307125087672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TweenAnimationController, Assembly-CSharp
         m_MethodName: PlayAnim
         m_Mode: 2
@@ -433,6 +436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5750314186407177325, guid: 381297badae7d3a4ca8d88d443e4ac77, type: 3}
+      propertyPath: _idleAnimation
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b43d66d397bc18418e46fb7c86b654a, type: 2}
     m_RemovedComponents:
     - {fileID: 2710371468196953981, guid: 381297badae7d3a4ca8d88d443e4ac77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 381297badae7d3a4ca8d88d443e4ac77, type: 3}
@@ -508,6 +515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5750314186407177325, guid: 381297badae7d3a4ca8d88d443e4ac77, type: 3}
+      propertyPath: _idleAnimation
+      value: 
+      objectReference: {fileID: 11400000, guid: 7caabe63452bc3041899c85d59898f34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381297badae7d3a4ca8d88d443e4ac77, type: 3}
 --- !u!4 &1259717588721101918 stripped

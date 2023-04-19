@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class TweenAnimationScalePreset : TweenAnimationPreset
         }
 
         _tween = transform.LeanScale(_targetScale, _time);
+
         base.PlayAnimation(transform);
     }
 }

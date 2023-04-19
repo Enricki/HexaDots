@@ -6,6 +6,7 @@ public class FinishCell : Cell
 {
     private EventListener _listener;
     protected EventSender _sender;
+
     private void Awake()
     {
         _listener = new EventListener(Events.Turn);
