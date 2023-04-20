@@ -12,30 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7557a6f73fe4042b4375a0a44b6ac3, type: 3}
   m_Name: Easy Dataset
   m_EditorClassIdentifier: 
-  _currentLevelIndex: 2
+  _currentLevelIndex: 0
+  _turnsCount: 0
   _levels:
   - _levelPrefab: {fileID: 8431265068994103006, guid: 08424c031cb00b24ea04ab30b21a3c39, type: 3}
-    _turnsTo3Stars: 2
-    _turnsTo2Stars: 3
-    _turnsTo1Star: 4
+    _starLevels: 010000000300000004000000
     _unlocked: 1
-    _achievedStars: 0
+    _achievedStars: 1
   - _levelPrefab: {fileID: 454941236375171817, guid: 3a1800a8685b49749a99f2b3b245219e, type: 3}
-    _turnsTo3Stars: 4
-    _turnsTo2Stars: 5
-    _turnsTo1Star: 7
-    _unlocked: 1
-    _achievedStars: 0
+    _starLevels: 020000000400000005000000
+    _unlocked: 0
+    _achievedStars: 1
   - _levelPrefab: {fileID: 5352818683158820804, guid: 159c282c2ca3ece4c93b0f10d12343be, type: 3}
-    _turnsTo3Stars: 5
-    _turnsTo2Stars: 6
-    _turnsTo1Star: 8
-    _unlocked: 1
-    _achievedStars: 0
+    _starLevels: 030000000600000007000000
+    _unlocked: 0
+    _achievedStars: 1
   - _levelPrefab: {fileID: 8953452918217952241, guid: 3b4b07c40c2e47c44ba01921ce2c8311, type: 3}
-    _turnsTo3Stars: 5
-    _turnsTo2Stars: 6
-    _turnsTo1Star: 8
-    _unlocked: 1
+    _starLevels: 040000000600000007000000
+    _unlocked: 0
     _achievedStars: 0
-  _turnsCount: 0

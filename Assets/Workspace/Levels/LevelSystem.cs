@@ -21,17 +21,24 @@ public class LevelSystem : MonoBehaviour
     private EventListener _reset;
     private EventListener _dropU;
 
+    private List<EventListener> _listeners;
+
     int _startOnValue;
 
     private void Awake()
     {
         _sendReset = new EventSender(Events.ResetLevel);
+
+        _listeners = new List<EventListener>();
+        _listeners.Add(new EventListener(Events.LevelEnd));
+
+
         _listener = new EventListener(Events.LevelEnd);
         _reset = new EventListener(Events.ResetLevel);
         _dropU = new EventListener(Events.DropU);
 
         _currentSet = LevelSets[0]; // ..........................................
-        _startOnValue = _currentSet.CurrentLevelIndex - 1;
+        _startOnValue = _currentSet.CurrentLevelIndex;
         Level instance = _currentSet.GetLevelParamByIndex(_startOnValue).LevelPrefab;
 
         _currentLevel = Instantiate(instance, transform);
@@ -51,40 +58,30 @@ public class LevelSystem : MonoBehaviour
 
     private void ChangeLevel()
     {
-        Destroy(_currentLevel.gameObject);
+    //    Destroy(_currentLevel.gameObject);
 
         _counter.Increase();
-        int nextIndex = _counter.Value + 1;
+        int nextIndex = _counter.Value;
 
-        _currentSet.CurrentLevelIndex = nextIndex;
-        _currentSet.UpdateLevelStat(_counter.Value, true, 0);
+    //    _currentSet.CurrentLevelIndex = nextIndex;
+     //   _currentSet.UpdateLevelStat(_counter.Value, true);
 
-        Level instance = _currentSet.GetLevelParamByIndex(_counter.Value).LevelPrefab;
-        _currentLevel = Instantiate(instance, transform);
+        //Level instance = _currentSet.GetLevelParamByIndex(_counter.Value).LevelPrefab;
+        //_currentLevel = Instantiate(instance, transform);
     }
 
     private void OnEnable()
     {
-        _listener.EventHook += ChangeLevel;
-        _listener.Subscribe();
-
-        _reset.EventHook += ResetLevelOnDrop;
-        _reset.Subscribe();
-
-        _dropU.EventHook += ResetLevelOnDrop;
-        _dropU.Subscribe();
+        _listener.Subscribe(ChangeLevel);
+        _reset.Subscribe(ResetLevelOnDrop);
+        _dropU.Subscribe(ResetLevelOnDrop);
     }
 
     private void OnDisable()
     {
-        _listener.EventHook -= ChangeLevel;
-        _listener.UnSubscribe();
-
-        _reset.EventHook -= ResetLevelOnDrop;
-        _reset.UnSubscribe();
-
-        _dropU.EventHook -= ResetLevelOnDrop;
-        _dropU.UnSubscribe();
+        _listener.UnSubscribe(ChangeLevel);
+        _reset.UnSubscribe(ResetLevelOnDrop);
+        _dropU.UnSubscribe(ResetLevelOnDrop);
     }
 
     IEnumerator WaitForSeconds(float sec)

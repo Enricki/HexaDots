@@ -3,14 +3,7 @@ using UnityEngine;
 
 public class MonoListener : MonoBehaviour
 {
-    [SerializeField]
-    private GameEvent[] _listeningEvents;
-    protected List<EventListener> _listeners;
-
-    private void Awake()
-    {
-        SetupListeners();
-    }
+    private List<EventListener> _listeners = new List<EventListener>();
 
     private void OnEnable()
     {
@@ -27,14 +20,15 @@ public class MonoListener : MonoBehaviour
             listener.UnSubscribe();
         }
     }
-
-    protected virtual void SetupListeners()
+    /// <summary>
+    /// Add and initialize new listener
+    /// </summary>
+    /// <param name="gameEvent">Event you want to listen</param>
+    /// <param name="pEvent">Method that will Invoke on EventInit</param>
+    protected void AddListener(GameEvent gameEvent, EventListener.PublicEvent pEvent)
     {
-        _listeners = new List<EventListener>();
-        foreach (var gameEvent in _listeningEvents)
-        {
-            EventListener newListener = new EventListener(gameEvent);
-            _listeners.Add(newListener);
-        }
+        EventListener newListener = new EventListener(gameEvent);
+        newListener.EventHook += pEvent;
+        _listeners.Add(newListener);
     }
 }

@@ -31,11 +31,11 @@ public class VolumeController : MonoBehaviour
 
     private void OnEnable()
     {
-        _listnChangeLevel.Sub(ChangeVolume);
+        _listnChangeLevel.Subscribe(ChangeVolume);
     }
 
     private void OnDisable()
     {
-        _listnChangeLevel.UnSub(ChangeVolume);
+        _listnChangeLevel.UnSubscribe(ChangeVolume);
     }
 }

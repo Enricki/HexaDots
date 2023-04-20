@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,13 +25,11 @@ public class FinishCell : Cell
 
     protected void OnEnable()
     {
-        _listener.EventHook += OnHasUnit;
-        _listener.Subscribe();
+        _listener.Subscribe(OnHasUnit);
     }
 
     protected void OnDisable()
     {
-        _listener.EventHook -= OnHasUnit;
-        _listener.UnSubscribe();
+        _listener.UnSubscribe(OnHasUnit);
     }
 }

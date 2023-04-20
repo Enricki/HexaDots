@@ -47,26 +47,16 @@ public class CounterSetup : MonoBehaviour
 
     private void OnEnable()
     {
-        _turnListener.EventHook += _actionOnTurn.Invoke;
-        _turnListener.Subscribe();
-
-        _endOfLevel.EventHook += _actionOnEnd.Invoke;
-        _endOfLevel.Subscribe();
-
-        _restartLevel.EventHook += ResetCounter;
-        _restartLevel.Subscribe();
+        _turnListener.Subscribe(_actionOnTurn.Invoke);
+        _endOfLevel.Subscribe(_actionOnEnd.Invoke);
+        _restartLevel.Subscribe(ResetCounter);
     }
 
     private void OnDisable()
     {
-        _turnListener.EventHook -= _actionOnTurn.Invoke;
-        _turnListener.UnSubscribe();
-
-        _endOfLevel.EventHook -= _actionOnEnd.Invoke;
-        _endOfLevel.UnSubscribe();
-
-        _restartLevel.EventHook -= ResetCounter;
-        _restartLevel.UnSubscribe();
+        _turnListener.UnSubscribe(_actionOnTurn.Invoke);
+        _endOfLevel.UnSubscribe(_actionOnEnd.Invoke);
+        _restartLevel.UnSubscribe(ResetCounter);
     }
 
     public void ResetCounter()

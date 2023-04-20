@@ -1,15 +1,17 @@
+using System;
 using UnityEngine;
 
 public class Cell : MonoBehaviour, ISelectable
 {
     private Unit _unit;
     protected Collider2D _collider;
+    protected Action _onHasUnit; 
 
     public Unit Unit { get => _unit; set => _unit = value; }
 
     private void Awake()
     {
-        transform.LeanScale(Vector2.zero, 0.9f).setEase(LeanTweenType.punch);
+        transform.LeanScale(Vector2.zero, 0.9f).setEase(LeanTweenType.punch); // Перенести в отдельный компонент
     }
 
 
@@ -18,7 +20,7 @@ public class Cell : MonoBehaviour, ISelectable
         return transform.position;
     }
 
-    public bool HasUnit
+    protected bool HasUnit
     {
         get
         {
@@ -30,5 +32,23 @@ public class Cell : MonoBehaviour, ISelectable
 
             return false;
         }
+    }
+
+    protected void OnHasUnit()
+    {
+        if (HasUnit)
+        {
+     //       _sender.SendEvent();
+        }
+    }
+
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        
     }
 }

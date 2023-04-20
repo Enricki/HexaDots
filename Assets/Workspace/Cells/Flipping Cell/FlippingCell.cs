@@ -124,14 +124,12 @@ public class FlippingCell : Cell
 
     private void OnEnable()
     {
-        _eventListener.EventHook += MovePointer;
-        _eventListener.Subscribe();
+        _eventListener.Subscribe(MovePointer);
     }
 
     private void OnDisable()
     {
-        _eventListener.EventHook -= MovePointer;
-        _eventListener.UnSubscribe();
+        _eventListener.UnSubscribe(MovePointer);
     }
 
     private void OnValidate()
