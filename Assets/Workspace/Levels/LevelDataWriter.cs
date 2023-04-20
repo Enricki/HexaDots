@@ -6,6 +6,10 @@ public sealed class LevelDataWriter : MonoListener
     private DataSetsKeeper _keeper;
     private LinearCounter _turnsCounter;
     private CyclicCounter _levelsCounter;
+
+    public int TurnsCount { get => _turnsCounter.Value; }
+    public int CurrentLevelIndex { get => _levelsCounter.Value; }
+
     private void Awake()
     {
         _turnsCounter = new LinearCounter(0);
@@ -32,12 +36,12 @@ public sealed class LevelDataWriter : MonoListener
     private void WriteCurrentLevelIndex()
     {
         LevelsDataSet dataSet = _keeper.CurrentSet;
-        dataSet.CurrentLevelIndex = _levelsCounter.Value;
+        dataSet.SetCurrentLevelIndex(this);
     }
 
     private void WriteTurns()
     {
         LevelsDataSet dataSet = _keeper.CurrentSet;
-        dataSet.TurnsCount = _turnsCounter.Value;
+        dataSet.SetTurnsCount(this);
     }
 }

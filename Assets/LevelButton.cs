@@ -41,6 +41,6 @@ public class LevelButton : MonoBehaviour
 
     public void SetCurrentLevel()
     {
-        _activeDataSet.CurrentLevelIndex = _id;
+     //   _activeDataSet.CurrentLevelIndex = _id;
     }
 }

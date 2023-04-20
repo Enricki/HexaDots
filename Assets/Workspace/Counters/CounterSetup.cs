@@ -61,7 +61,7 @@ public class CounterSetup : MonoBehaviour
 
     public void ResetCounter()
     {
-        _set.TurnsCount = _counter.Value;
+    //    _set.TurnsCount = _counter.Value;
         _counter.Reset();
         UpdateView();
     }

@@ -18,7 +18,7 @@ MonoBehaviour:
   - _levelPrefab: {fileID: 8431265068994103006, guid: 08424c031cb00b24ea04ab30b21a3c39, type: 3}
     _starLevels: 010000000300000004000000
     _unlocked: 1
-    _achievedStars: 1
+    _achievedStars: 0
   - _levelPrefab: {fileID: 454941236375171817, guid: 3a1800a8685b49749a99f2b3b245219e, type: 3}
     _starLevels: 020000000400000005000000
     _unlocked: 0

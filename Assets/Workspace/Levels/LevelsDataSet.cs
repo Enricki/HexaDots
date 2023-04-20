@@ -16,9 +16,20 @@ public class LevelsDataSet : ScriptableObject
 
     public int LevelsCount { get => _levels.Count; }
 
-    public int CurrentLevelIndex { get => _currentLevelIndex; set => _currentLevelIndex = value; }
+    public int CurrentLevelIndex { get => _currentLevelIndex; }
 
-    public int TurnsCount { get => _turnsCount; set => _turnsCount = value; }
+    public int TurnsCount { get => _turnsCount; }
+
+    public void SetTurnsCount(LevelDataWriter writer)
+    {
+        _turnsCount = writer.TurnsCount;
+    }
+
+    public void SetCurrentLevelIndex(LevelDataWriter writer)
+    {
+        _currentLevelIndex = writer.CurrentLevelIndex;
+    }
+
 
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 
