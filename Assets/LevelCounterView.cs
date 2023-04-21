@@ -16,6 +16,7 @@ public class LevelCounterView : MonoListener, IView
     public void UpdateView()
     {
         LevelsDataSet dataSet = _keeper.CurrentSet;
-        _valueField.text = dataSet.CurrentLevelIndex.ToString();
+        int currentLevel = dataSet.CurrentLevelIndex + 1;
+        _valueField.text = currentLevel.ToString();
     }
 }

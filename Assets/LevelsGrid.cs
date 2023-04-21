@@ -27,7 +27,7 @@ public class LevelsGrid : MonoBehaviour
             button.SetLevelIndex(index);
             button.Id = index;
             button.ActiveDataSet = _dataSet;
-            if (_dataSet.GetLevelParamByIndex(i).Unlocked)
+            if (_dataSet.GetLevelDataByIndex(i).Unlocked)
             {
                 button.SetOpen();
             }

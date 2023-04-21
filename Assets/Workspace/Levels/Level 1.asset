@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41897121a349cbe4b93b5422a531cccd, type: 3}
-  m_Name: LevelSetsKeeper
+  m_Script: {fileID: 11500000, guid: 788d31b9e91032c4da498d54e40f3139, type: 3}
+  m_Name: Level 1
   m_EditorClassIdentifier: 
-  _currentSet: {fileID: 11400000, guid: edfe09ac9d1aaf94bb81857225fb67d0, type: 2}
-  _dataSets:
-  - {fileID: 11400000, guid: edfe09ac9d1aaf94bb81857225fb67d0, type: 2}
+  _levelPrefab: {fileID: 8431265068994103006, guid: 08424c031cb00b24ea04ab30b21a3c39, type: 3}
+  _starLevels: 020000000400000006000000
+  _unlocked: 0
+  _achievedStars: 0

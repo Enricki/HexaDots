@@ -14,20 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentLevelIndex: 0
   _turnsCount: 0
+  _starsAchieved: 0
   _levels:
-  - _levelPrefab: {fileID: 8431265068994103006, guid: 08424c031cb00b24ea04ab30b21a3c39, type: 3}
-    _starLevels: 010000000300000004000000
-    _unlocked: 1
-    _achievedStars: 0
-  - _levelPrefab: {fileID: 454941236375171817, guid: 3a1800a8685b49749a99f2b3b245219e, type: 3}
-    _starLevels: 020000000400000005000000
-    _unlocked: 0
-    _achievedStars: 1
-  - _levelPrefab: {fileID: 5352818683158820804, guid: 159c282c2ca3ece4c93b0f10d12343be, type: 3}
-    _starLevels: 030000000600000007000000
-    _unlocked: 0
-    _achievedStars: 1
-  - _levelPrefab: {fileID: 8953452918217952241, guid: 3b4b07c40c2e47c44ba01921ce2c8311, type: 3}
-    _starLevels: 040000000600000007000000
-    _unlocked: 0
-    _achievedStars: 0
+  - {fileID: 11400000, guid: 9804e4bcf93569d4aa450158c8772440, type: 2}
+  - {fileID: 11400000, guid: 18df77941603924478e1fc9b049ac9ff, type: 2}
+  - {fileID: 11400000, guid: 50a658a9ae3b23a4290e09e3e05005f4, type: 2}
+  - {fileID: 11400000, guid: 0f1f78a7a497c6c49ad0432901cd0ff9, type: 2}
