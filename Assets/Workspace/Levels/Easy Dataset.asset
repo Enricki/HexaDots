@@ -12,11 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7557a6f73fe4042b4375a0a44b6ac3, type: 3}
   m_Name: Easy Dataset
   m_EditorClassIdentifier: 
-  _currentLevelIndex: 1
-  _turnsCount: 3
+  _currentLevelIndex: 0
+  _turnsCount: 0
   _totalScoreAvaliable: 0
   _currentScore: 0
   _totalScoreAchieved: 0
   _levels:
   - {fileID: 11400000, guid: 9804e4bcf93569d4aa450158c8772440, type: 2}
   - {fileID: 11400000, guid: 18df77941603924478e1fc9b049ac9ff, type: 2}
+  - {fileID: 11400000, guid: 50a658a9ae3b23a4290e09e3e05005f4, type: 2}
+  - {fileID: 11400000, guid: 0f1f78a7a497c6c49ad0432901cd0ff9, type: 2}
+  - {fileID: 11400000, guid: 94008515560213645a8ec9380f2aea73, type: 2}
+  - {fileID: 11400000, guid: dec552ff240a6ac468e9ceb6bcfecd71, type: 2}
+  - {fileID: 11400000, guid: 21e6e001d962bb9498653b834a8a34cd, type: 2}
+  - {fileID: 11400000, guid: 464e6f78f7df0cb4cbec7e9a64b84d7c, type: 2}
+  - {fileID: 11400000, guid: 4bba5f971b149f149a19c5014dd34e04, type: 2}
+  - {fileID: 11400000, guid: b1d48d96a3cfcc34fb0badfb12d47623, type: 2}
+  - {fileID: 11400000, guid: 10867312ceaddbd44a1387aa6de8d1ca, type: 2}

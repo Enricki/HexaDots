@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
 
     private MovementController _controller;
     private Scaler _scaler;
+    private AudioSource _audioSource;
 
     private MovementStatesFactory _states;
     private State _currentState;
@@ -33,6 +34,7 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _controller = GetComponent<MovementController>();
         _scaler = GetComponent<Scaler>();
         _states = new MovementStatesFactory(this);
@@ -51,6 +53,7 @@ public class Unit : MonoBehaviour, ISelectable, IStateContext
 
     public void SendTurn()
     {
+        _audioSource.Play();
         _sender.SendEvent();
     }
 

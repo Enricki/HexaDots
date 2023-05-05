@@ -33,8 +33,10 @@ public class FlippingCell : Cell
 
     private void Awake()
     {
+
         _eventListener = new EventListener(Events.Turn);
         _sender = new EventSender(Events.DropU);
+    //   
     }
 
     private void Start()
@@ -46,6 +48,7 @@ public class FlippingCell : Cell
         AddPoints();
         AddPointer();
         defaultColor = _renderer.color;
+     //   transform.LeanScale(Vector2.zero, 0.9f).setEase(LeanTweenType.punch); // Перенести в отдельный компонент
     }
 
     private void AddPointer()

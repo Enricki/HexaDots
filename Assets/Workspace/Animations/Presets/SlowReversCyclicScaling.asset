@@ -16,6 +16,6 @@ MonoBehaviour:
   _usePinPongLoop: 1
   _time: 1
   _delay: 0
-  _useStartValue: 0
+  _useStartValue: 1
   _startScale: {x: 0.9, y: 0.9}
   _targetScale: {x: 1, y: 1}

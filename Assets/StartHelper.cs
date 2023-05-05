@@ -22,5 +22,6 @@ public class StartHelper : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        _settings.ShowHelper = false;
     }
 }

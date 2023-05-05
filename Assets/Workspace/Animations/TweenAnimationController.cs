@@ -11,6 +11,8 @@ public class TweenAnimationController : MonoBehaviour
     [SerializeField]
     TweenAnimationPreset _exitAnimation;
 
+
+
     private void Awake()
     {
 
@@ -39,4 +41,8 @@ public class TweenAnimationController : MonoBehaviour
         PlayAnim(_idleAnimation);
     }
 
+    public void PlayExit()
+    {
+        PlayAnim(_exitAnimation);
+    }
 }

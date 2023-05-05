@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 5352818683158820804, guid: 159c282c2ca3ece4c93b0f10d12343be, type: 3}
-  _scoreLevels: 
-  _unlocked: 0
+  _scoreLevels: 050000000600000007000000
   _achievedScore: 0
-  _currentScore: 0
+  _unlocked: 0

@@ -3,7 +3,7 @@ using UnityEditor.EditorTools;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-[EditorTool(displayName: "Custom Snap Move", typeof(CustomSnap))]
+[EditorTool(displayName: "Custom Snap Move %g", typeof(CustomSnap))]
 public class CustomSnappingTool : EditorTool
 {
     public Texture2D ToolIcon;

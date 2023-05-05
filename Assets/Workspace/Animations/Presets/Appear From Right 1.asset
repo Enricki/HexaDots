@@ -16,6 +16,6 @@ MonoBehaviour:
   _usePinPongLoop: 0
   _time: 1.2
   _delay: 0
-  _useStartPosition: 0
-  _startPosition: {x: 0, y: 0}
-  _targetPosition: {x: -1070, y: 0}
+  _useStartPosition: 1
+  _startPosition: {x: 1023, y: -328}
+  _targetPosition: {x: 146, y: -328}

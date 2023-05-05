@@ -20,6 +20,13 @@ public class LevelData : ScriptableObject
     public int ScoreLevelsCount { get => _scoreLevels.Length; }
     public int AchievedScore { get => _achievedScore; }
 
+
+    public void ResetData()
+    {
+        _achievedScore = 0;
+        _unlocked = false;
+    }
+
    public void SetAchievedScore(IWriter<int> writer)
     {
         _achievedScore = writer.Value;

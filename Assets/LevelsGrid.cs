@@ -21,12 +21,12 @@ public class LevelsGrid : MonoBehaviour
         _buttons.Clear();
         for (int i = 0; i < transform.childCount; i++)
         {
-            int index = i + 1;
             LevelButton button = transform.GetChild(i).GetComponent<LevelButton>();
-            button.gameObject.name = _butonName + (index);
-            button.SetLevelIndex(index);
-            button.Id = index;
+            button.gameObject.name = _butonName + (i + 1);
+            button.SetLevelIndex(i);
+            button.Id = i;
             button.ActiveDataSet = _dataSet;
+            button.SetOpen();
             if (_dataSet.GetLevelDataByIndex(i).Unlocked)
             {
                 button.SetOpen();

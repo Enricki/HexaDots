@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class LevelButton : MonoBehaviour
+public class LevelButton : MonoBehaviour, IWriter<int>
 {
     [SerializeField]
     private Button _button;
@@ -12,6 +12,8 @@ public class LevelButton : MonoBehaviour
     private TMP_Text _textfield;
     [SerializeField]
     private Image _image;
+    [SerializeField]
+    private ScoreVisual _scoreVisual;
 
     private LevelsDataSet _activeDataSet;
 
@@ -20,9 +22,11 @@ public class LevelButton : MonoBehaviour
     public int Id { get => _id; set => _id = value; }
     public LevelsDataSet ActiveDataSet { set => _activeDataSet = value; }
 
+    public int Value { get => _id; }
+
     public void SetLevelIndex(int levelIndex)
     {
-        _textfield.text = levelIndex.ToString();
+        _textfield.text = (levelIndex + 1).ToString();
     }
 
     public void SetClose()
@@ -30,6 +34,7 @@ public class LevelButton : MonoBehaviour
         _textfield.enabled = false;
         _image.enabled = true;
         _button.interactable = false;
+        _scoreVisual.gameObject.SetActive(false);
     }
 
     public void SetOpen()
@@ -37,10 +42,16 @@ public class LevelButton : MonoBehaviour
         _textfield.enabled = true;
         _image.enabled = false;
         _button.interactable = true;
+        _scoreVisual.gameObject.SetActive(true);
     }
 
     public void SetCurrentLevel()
     {
-     //   _activeDataSet.CurrentLevelIndex = _id;
+        _activeDataSet.SetCurrentLevelIndex(this);
+    }
+
+    public void WriteData()
+    {
+        SetCurrentLevel();
     }
 }
