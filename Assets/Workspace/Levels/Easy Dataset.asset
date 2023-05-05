@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7557a6f73fe4042b4375a0a44b6ac3, type: 3}
   m_Name: Easy Dataset
   m_EditorClassIdentifier: 
-  _currentLevelIndex: 0
-  _turnsCount: 0
-  _starsAchieved: 0
+  _currentLevelIndex: 1
+  _turnsCount: 3
+  _totalScoreAvaliable: 0
+  _currentScore: 0
+  _totalScoreAchieved: 0
   _levels:
   - {fileID: 11400000, guid: 9804e4bcf93569d4aa450158c8772440, type: 2}
   - {fileID: 11400000, guid: 18df77941603924478e1fc9b049ac9ff, type: 2}
-  - {fileID: 11400000, guid: 50a658a9ae3b23a4290e09e3e05005f4, type: 2}
-  - {fileID: 11400000, guid: 0f1f78a7a497c6c49ad0432901cd0ff9, type: 2}

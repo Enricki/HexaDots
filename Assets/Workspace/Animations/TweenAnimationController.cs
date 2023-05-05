@@ -13,6 +13,11 @@ public class TweenAnimationController : MonoBehaviour
 
     private void Awake()
     {
+
+    }
+
+    private void OnEnable()
+    {
         PlayAnim(_appearanceAnimation);
         if (_idleAnimation != null)
         {
@@ -33,4 +38,5 @@ public class TweenAnimationController : MonoBehaviour
     {
         PlayAnim(_idleAnimation);
     }
+
 }

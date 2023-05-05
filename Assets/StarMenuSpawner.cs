@@ -6,33 +6,31 @@ using UnityEngine.UI;
 public class StarMenuSpawner : MonoListener
 {
     [SerializeField]
+    private DataSetsKeeper _keeper;
+    [SerializeField]
     private List<GameObject> _stars;
 
-    private void Awake()
-    {
 
+    private void OnEnable()
+    {
+        Appear();
     }
 
 
-
-    public void Check()
+    private void OnDisable()
     {
-        //LevelData currentlevel = _dataSet.GetLevelParamByIndex(_startOnValue);
-
-        //for (int i = 0; i < currentlevel.StarLevelsCount; i++)
-        //{
-        //    if (_dataSet.TurnsCount <= currentlevel.GetStarLevel(i))
-        //    {
-        //        _dataSet.SetAchievedStars(_startOnValue, i);
-        //        break;
-        //    }
-        //}
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            _stars[i].SetActive(false);
+        }
     }
-
 
     private void Appear()
     {
-        _stars[0].SetActive(true);
-        Check();
+        LevelData currentlevel = _keeper.CurrentSet.GetCurrentLevelData();
+        for (int i = 0; i < currentlevel.AchievedScore; i++)
+        {
+            _stars[i].SetActive(true);
+        }
     }
 }

@@ -2,39 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSystem : MonoListener
+public class LevelSystem : MonoListener, IWriter<int>
 {
     [SerializeField]
     private DataSetsKeeper _keeper;
     private Level _currentLevel;
 
-    //    private EventSender _sendReset;
+    private CyclicCounter _counter;
+    private int _currentLevelIndex;
+
+    public int Value { get => _counter.Value; private set => _currentLevelIndex = value; }
 
     private void Awake()
     {
+        _counter = new CyclicCounter(0, _keeper.CurrentSet.CurrentLevelIndex, _keeper.CurrentSet.LevelsCount);
 
-        //        _sendReset = new EventSender(Events.ResetLevel);
+
         LoadCurrentLevel();
+
+
+        AddListener(Events.LevelEnd, _counter.Increase);
+        AddListener(Events.LevelEnd, WriteData);
         AddListener(Events.LevelEnd, LoadCurrentLevel);
         AddListener(Events.DropU, LoadCurrentLevel);
         AddListener(Events.ResetLevel, LoadCurrentLevel);
     }
 
-    //public void SendResetLevel()
-    //{
-    //    _sendReset.SendEvent();
-    //}
-
-    //private void ResetLevelOnDrop()
-    //{
-    //    StartCoroutine(WaitForSeconds(0.3f));
-    //}
-
     private void LoadCurrentLevel()
     {
         if (_currentLevel != null)
             Destroy(_currentLevel.gameObject);
-        StartCoroutine(DelayedLevelLoad(0.3f));
+        StartCoroutine(DelayedLevelLoad(2f));
     }
 
     IEnumerator DelayedLevelLoad(float sec)
@@ -43,5 +41,11 @@ public class LevelSystem : MonoListener
         LevelsDataSet current = _keeper.CurrentSet;
         Level instance = current.GetLevelDataByIndex(current.CurrentLevelIndex).LevelPrefab;
         _currentLevel = Instantiate(instance, transform);
+    }
+
+    public void WriteData()
+    {
+        _currentLevelIndex = _counter.Value;
+        _keeper.CurrentSet.SetCurrentLevelIndex(this);
     }
 }
